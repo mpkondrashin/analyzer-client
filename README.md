@@ -33,7 +33,7 @@ In this example url, ignore_tls_error, and client_id are taken from configuratio
 **Note:** If same parameter is provided in two ways, command line parameters have higher priority than environment variable and the latter, higher priority than configuration file.
 
 ## Testing Connection
-Test connection with Analyzer
+Test connection to Analyzer
 
 Required parameters: url, api_key
 ```commandline

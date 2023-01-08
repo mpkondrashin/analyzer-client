@@ -32,7 +32,9 @@ In this example url, ignore_tls_error, and client_id are taken from configuratio
 
 **Note:** If same parameter is provided in two ways, command line parameters have higher priority than environment variable and the latter, higher priority than configuration file.
 
-## Testing Connection
+## Commands
+
+### Testing Connection
 Test connection to Analyzer
 
 Required parameters: url, api_key
@@ -40,7 +42,7 @@ Required parameters: url, api_key
 acli test_connection <options>
 ```
 
-## Register
+### Register
 Add client to Analyzer submitters list
 
 Required parameters: url, api_key, client_id
@@ -48,8 +50,7 @@ Required parameters: url, api_key, client_id
 acli register <options>
 ```
 
-
-## Unregister
+### Unregister
 Remove client from Analyzer submitters list
 
 Required parameters: url, api_key, client_id
@@ -57,7 +58,7 @@ Required parameters: url, api_key, client_id
 acli unregister <options>
 ```
 
-## Submit
+### Submit
 Submit file to Analyzer for analysis
 
 Required parameters: url, api_key, client_id, filename
@@ -65,7 +66,7 @@ Required parameters: url, api_key, client_id, filename
 acli submit <options>
 ```
 
-## Brief Report
+### Brief Report
 Get sample status and its risk level
 
 Required parameters: url, api_key, client_id, sha1
@@ -73,10 +74,62 @@ Required parameters: url, api_key, client_id, sha1
 acli brief_report <options>
 ```
 
-## Report Raw
+### Report Raw
 Get analysis result report in XML format
 
 Required parameters: url, api_key, client_id, sha1
 ```commandline
 acli report_raw <options>
 ```
+
+## Example
+
+### 1. Configuration file
+Create file config.yaml with following content:
+```yaml
+url: https://<your analyzer address>
+apu_key: <your analyzer api key> # Help -> About on Analyzer Web console
+ignore_tls_errors: true
+client_id: 12341234-1234-1234-1234-123412341234 # or any other unique UUID
+```
+
+### 2. Test Connection
+Run following command
+```commandline
+./acli test_connection
+```
+
+### 3. Register
+Run following command
+```commandline
+./acli register
+```
+Check Submitions -> Submitters on Analyzer Web UI to see that this tool successfully registered itself
+
+### 4. Submit File
+Run following command
+```commandline
+./acli submit --filename <file path>
+```
+
+### 5. Check Result
+Get submitted file SHA1 has using following command:
+```commandline
+sha1sum -a 1  <file path>
+```
+Using this hash run following command
+```commandline
+./acli brief_report --sha1 <hash>
+```
+When status will be "Done", RiskLevel will show whenever the file is malicious or not
+### 6. Get Full Report
+Run following command
+```commandline
+./acli report_raw --sha1 <hash>
+```
+### 7. Unregister
+Run following command
+```commandline
+./acli unregister
+```
+Check Submitions -> Submitters on Analyzer Web UI to see that this tool successfully unregistered itself

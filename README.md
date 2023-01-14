@@ -16,6 +16,12 @@ Each parameter can be provided in three ways:
 | client_id<br/>--client_id<br/>ACLI_CLIENT_ID | Client ID. Unique UUID for each submitter. After registering should be saved for future requests |
 | sha1<br/>--sha1<br/>ACLI_SHA1 | SHA1 hash of requested file |
 | filename<br/>--filename<br/>ACLI_FILENAME | Path to file |
+| start<br/>--start<br/>ACLI_START | Start time in format YYYY-MM-DD-HH-MM |
+| end<br>--end<br>ACLI_END | End time in format YYYY-MM-DD-HH-MM |
+| device<br>--device<br>ACLI_DEVICE | Device type (SourceID) |
+| sample<br>--sample<br>ACLI_SAMPLE | Sample ID returned by sample_list command |
+| dry_run<br>--dry_run<br>ACLI_DRY_RUN | Show request headers and exit |
+
 
 Any combination of parameters can be used with acli. For example, creating following configuration file (config.yaml):
 ```yaml
@@ -81,6 +87,42 @@ Required parameters: url, api_key, client_id, sha1
 ```commandline
 acli report_raw <options>
 ```
+
+### Report
+Get analysis result report parsed
+
+Required parameters: url, api_key, client_id, sha1
+```commandline
+acli report <options>
+```
+
+### PDF Report
+Get analysis result report in PDF format
+
+Required parameters: url, api_key, client_id, sha1
+```commandline
+acli pdf_report <options>
+```
+
+### List Samples
+List samples by time interval
+
+Required parameters: url, api_key, client_id
+
+Optional paremeters: start, end, device
+```commandline
+acli sample_list <options>
+```
+
+### Sample Info
+Get sample info
+
+Required parameters: url, api_key, client_id, sample
+```commandline
+acli sample_info <options>
+```
+
+|sample_info_x|package|quota} [options]
 
 ## Example
 

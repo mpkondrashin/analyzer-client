@@ -6,7 +6,7 @@
 Each parameter can be provided in three ways: 
 1. Configuration file config.yaml. Acli seeks for this file in its current folder
 2. Environment variables
-3. Command line parameters
+3. Command line parameters (not all commands support all parameters):
 
 | YAML option<br/>Command line<br/>Env variable | Description | 
 | --------------------------------------------- | ----------- | 
@@ -20,7 +20,7 @@ Each parameter can be provided in three ways:
 | end<br>--end<br>ACLI_END | End time in format YYYY-MM-DD-HH-MM |
 | device<br>--device<br>ACLI_DEVICE | Device type (SourceID) |
 | sample<br>--sample<br>ACLI_SAMPLE | Sample ID returned by sample_list command |
-| dry_run<br>--dry_run<br>ACLI_DRY_RUN | Show request headers and exit |
+| dry_run<br>--dry_run<br>ACLI_DRY_RUN | Show request and exit |
 
 
 Any combination of parameters can be used with acli. For example, creating following configuration file (config.yaml):
@@ -72,6 +72,14 @@ Required parameters: url, api_key, client_id, filename
 acli submit <options>
 ```
 
+### Simple Submit
+Submit file to Analyzer for analysis without accompanying meta data
+
+Required parameters: url, api_key, client_id, filename
+```commandline
+acli simple <options>
+```
+
 ### Brief Report
 Get sample status and its risk level
 
@@ -114,15 +122,38 @@ Optional paremeters: start, end, device
 acli sample_list <options>
 ```
 
-### Sample Info
-Get sample info
+### Sample Info as XML
+Get sample information by its ID in XML format
 
 Required parameters: url, api_key, client_id, sample
 ```commandline
 acli sample_info <options>
 ```
 
-|sample_info_x|package|quota} [options]
+### Sample Info parsed
+Get sample information by its ID as parsed struct
+
+Required parameters: url, api_key, client_id, sample
+```commandline
+acli sample_info_x <options>
+```
+
+### Download analysis package
+Get all analysis information as one password-protected ZIP file.
+Password for ZIP is "virus"
+
+Required parameters: url, api_key, client_id, sha1
+```commandline
+acli package <options>
+```
+
+### Get Analyzer quota as XML
+Get throughput of Analyzer for files and URLs in minute
+
+Required parameters: url, api_key, client_id
+```commandline
+acli quota <options>
+```
 
 ## Example
 
@@ -157,18 +188,27 @@ Run following command
 ### 5. Check Result
 Get submitted file SHA1 has using following command:
 ```commandline
-sha1sum -a 1  <file path>
+shasum -a 1  <file path>
 ```
 Using this hash run following command
 ```commandline
 ./acli brief_report --sha1 <hash>
 ```
-When status will be "Done", RiskLevel will show whenever the file is malicious or not
-### 6. Get Full Report
-Run following command
+When status will be "4", RiskLevel will show whenever the file is malicious or not
+### 6. Get Reports
+Run following command for XML format
 ```commandline
 ./acli report_raw --sha1 <hash>
 ```
+Or use following command for PDF
+```commandline
+acli pdf_report --sha1 <hash>
+```
+Or download full analysis package using following command:
+```commandline
+acli package --sha1 <hash>
+```
+
 ### 7. Unregister
 Run following command
 ```commandline

@@ -1,4 +1,4 @@
-# ACLI - Analyzer Commad Line Interface
+# ACLI - Analyzer Command Line Interface
 
 **Command line utility to use Deep Discovery Analyzer Web API**
 
@@ -29,14 +29,14 @@ url: https://192.168.32.100
 ignore_tls_error: true
 client_id: 12341234-1234-1234-1234-123412341234
 ```
-Following command can be used t ogenerate report (example for Linux command line):
+Following command can be used to generate report (example for Linux command line):
 ```
 ACLI_API_KEY=12341234-1234-1234-1234-123412341234 ./acli report_raw --sha1 492bafdaa3cc57ffc8e0d7928d1d25a37d7d6d13
 ```
 
-In this example url, ignore_tls_error, and client_id are taken from configuration file; api_key from environment variable and sha1 from command line.
+In this example, url, ignore_tls_error, and client_id are taken from configuration file; api_key from environment variable and sha1 from command line.
 
-**Note:** If same parameter is provided in two ways, command line parameters have higher priority than environment variable and the latter, higher priority than configuration file.
+**Note:** If the same parameter is provided in two ways, command line parameters have higher priority than environment variable and the latter, higher priority than configuration file.
 
 ## Commands
 
@@ -73,7 +73,7 @@ acli submit <options>
 ```
 
 ### Simple Submit
-Submit file to Analyzer for analysis without accompanying meta data
+Submit file to Analyzer for analysis without accompanying metadata
 
 Required parameters: url, api_key, client_id, filename
 ```commandline
@@ -113,7 +113,7 @@ acli pdf_report <options>
 ```
 
 ### List Samples
-List samples by time interval
+List of samples by time interval
 
 Required parameters: url, api_key, client_id
 
@@ -177,7 +177,7 @@ Run following command
 ```commandline
 ./acli register
 ```
-Check Submitions -> Submitters on Analyzer Web UI to see that this tool successfully registered itself
+Check Submission -> Submitters on Analyzer Web UI to see that this tool successfully registered itself
 
 ### 4. Submit File
 Run following command
@@ -190,7 +190,7 @@ Get submitted file SHA1 has using following command:
 ```commandline
 shasum -a 1  <file path>
 ```
-Using this hash run following command
+Using this hash, run the following command
 ```commandline
 ./acli brief_report --sha1 <hash>
 ```
@@ -214,4 +214,4 @@ Run following command
 ```commandline
 ./acli unregister
 ```
-Check Submitions -> Submitters on Analyzer Web UI to see that this tool successfully unregistered itself
+Check Submissions -> Submitters on Analyzer Web UI to see that this tool successfully unregistered itself

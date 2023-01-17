@@ -11,7 +11,8 @@ Each parameter can be provided in three ways:
 | YAML option<br/>Command line<br/>Env variable | Description | 
 | --------------------------------------------- | ----------- | 
 | url<br/>--url<br/>url ACLI_URL | Analyzer address |
-| api_key<br/>---api_key<br/>ACLI_API_KEY | Analyzer API key |
+| api_key<br/>--api_key<br/>ACLI_API_KEY | Analyzer API key |
+| version<br/>--version<br/>ACLI_VERSION | WebServices API protocol version. Defaults to 2.0 (Analyzer 7.0) |
 | ignore_tls_errors<br/>--ignore_tls_errors<br/>ACLI_IGNORE_TLS_ERRORS | Ignore TLS errors |
 | client_id<br/>--client_id<br/>ACLI_CLIENT_ID | Client ID. Unique UUID for each submitter. After registering should be saved for future requests |
 | sha1<br/>--sha1<br/>ACLI_SHA1 | SHA1 hash of requested file |

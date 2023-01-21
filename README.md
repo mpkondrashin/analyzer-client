@@ -4,7 +4,7 @@
 
 ## Parameters
 Each parameter can be provided in three ways: 
-1. Configuration file config.yaml. Acli seeks for this file in its current folder
+1. Configuration file config.yaml. Acli seeks for this file in its current folder or in the folder of acli executable itself.
 2. Environment variables
 3. Command line parameters (not all commands support all parameters):
 
@@ -21,6 +21,7 @@ Each parameter can be provided in three ways:
 | end<br>--end<br>ACLI_END | End time in format YYYY-MM-DD-HH-MM |
 | device<br>--device<br>ACLI_DEVICE | Device type (SourceID) |
 | sample<br>--sample<br>ACLI_SAMPLE | Sample ID returned by sample_list command |
+| json<br>--json<br>ACLI_JSON | Output in JSON format (XML otherwise) |
 | dry_run<br>--dry_run<br>ACLI_DRY_RUN | Show request and exit |
 
 
@@ -216,3 +217,7 @@ Run following command
 ./acli unregister
 ```
 Check Submissions -> Submitters on Analyzer Web UI to see that this tool successfully unregistered itself
+
+## Troubleshooting
+
+--dry_run parameter give ability to display request without sending it to Analyzer

@@ -23,8 +23,11 @@ Each parameter can be provided in three ways:
 | sample<br>--sample<br>ACLI_SAMPLE | Sample ID returned by sample_list command |
 | json<br>--json<br>ACLI_JSON | Output in JSON format (XML otherwise) |
 | dry_run<br>--dry_run<br>ACLI_DRY_RUN | Show request and exit |
-
-
+| proxy<br>--proxy<br>ACLI_PROXY |  Proxy URL (scheme://address:port) |
+| proxy_user<br>--proxy_user<br>ACLI_PROXY_USER | Proxy username |
+| proxy_password<br>--proxy_password<br>ACLI_PROXY_PASSWORD | Proxy password |
+| proxy_domain<br>--proxy_domain<br>ACLI_PROXY_DOMAIN | Proxy auth domain (for NTLM auth) |
+	
 Any combination of parameters can be used with acli. For example, creating following configuration file (config.yaml):
 ```yaml
 url: https://192.168.32.100

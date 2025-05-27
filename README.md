@@ -93,6 +93,43 @@ Required parameters: url, api_key, client_id, sha1
 acli brief_report <options>
 ```
 
+Output in JSON format sample:
+```json
+{
+	"Version": "1.2",
+	"Reports": [
+		{
+			"SHA1": "1049A7F17F349FEEE459D3E566166837F27494A6",
+			"SampleStatus": 4,
+			"RiskLevel": 1
+		}
+	]
+}
+```
+
+SampleStatus values:
+
+| Value | Description |
+| ----- | ----------- |
+| 1 | Not Found |
+| 2 | Arrived |
+| 3 | Processing |
+| 4 | Done |
+| 5 | Error |
+| 6 | Timeout |
+
+RiskLevel - the field is valid if and only if STATUS is Done:
+
+| Value | Description |
+| ----- | ----------- |
+| -1 | Unsupported file type |
+| 0 | No Risk Found |
+| 1 | Low Risk |
+| 2 | Medium Risk |
+| 3 | High Risk |
+
+All other negative values - analyzer error.
+
 ### Report Raw
 Get analysis result report in XML format
 

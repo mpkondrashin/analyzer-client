@@ -17,6 +17,7 @@ Each parameter can be provided in three ways:
 | client_id<br/>--client_id<br/>ACLI_CLIENT_ID | Client ID. Unique UUID for each submitter. After registering should be saved for future requests |
 | sha1<br/>--sha1<br/>ACLI_SHA1 | SHA1 hash of requested file |
 | filename<br/>--filename<br/>ACLI_FILENAME | Path to file |
+| original_filename<br/>--original_filename<br/>ACLI_ORIGINAL_FILENAME | Original filename. Needed in case filename has wrong extension |
 | start<br/>--start<br/>ACLI_START | Start time in format YYYY-MM-DD-HH-MM |
 | end<br>--end<br>ACLI_END | End time in format YYYY-MM-DD-HH-MM |
 | device<br>--device<br>ACLI_DEVICE | Device type (SourceID) |

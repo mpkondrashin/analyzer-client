@@ -28,7 +28,7 @@ Each parameter can be provided in three ways:
 | proxy_user<br>--proxy_user<br>ACLI_PROXY_USER | Proxy username |
 | proxy_password<br>--proxy_password<br>ACLI_PROXY_PASSWORD | Proxy password |
 | proxy_domain<br>--proxy_domain<br>ACLI_PROXY_DOMAIN | Proxy auth domain (for NTLM auth) |
-	
+| start_size<br>--start_size<br>ACLI_START_SIZE | Starting size for max_size command |	
 Any combination of parameters can be used with acli. For example, creating following configuration file (config.yaml):
 ```yaml
 url: https://192.168.32.100
@@ -196,6 +196,19 @@ Get throughput of Analyzer for files and URLs in minute
 Required parameters: url, api_key, client_id
 ```commandline
 acli quota <options>
+```
+
+### Detect Maximum Size
+Detect maximum size of file that can be submitted to Analyzer. It
+is probing file sizes incrementally and then narrowing down the range
+until it finds the maximum size.
+
+**Note:** This command can take a long time to complete.
+
+Required parameters: url, api_key, client_id
+Optional parameter: start_size
+```commandline
+acli max_size <options>
 ```
 
 ## Example
